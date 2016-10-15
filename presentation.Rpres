@@ -1,0 +1,86 @@
+Chatterjee–Price Attitude k-means clustering Shiny Application
+========================================================
+author: Eduardo Garcia
+date: 15/10/2016
+autosize: true
+
+Introduction
+========================================================
+
+This Shiny Application applies k-means to the Chatterjee–Price Attitude dataset
+obtained from the R datasets library. It provides the following features:
+
+- X Y Variable selection
+- Cluster count selection
+- K-means plot
+
+The Chatterjee–Price Attitude dataset
+========================================================
+
+The dataset is a survey of the clerical employees of a large financial 
+organization. The data are aggregated from the questionnaires of the 
+approximately 35 employees for each of 30 (randomly selected) departments. 
+The numbers give the percent proportion of favourable responses to seven 
+questions in each department.
+
+
+```{r}
+# Load the datasets library
+library(datasets)
+
+# Inspect the data structure
+str(attitude)
+
+# Data summary
+summary(attitude)
+```
+
+Clustering data
+========================================================
+
+The goal of this Shiny application is to cluster the attitude dataset with the
+responses from all 30 departments for the different variables in order to
+understand whether there are commonalities among certain departments. For 
+example, if we consider the privileges and learning variables, the initial 
+problem looks like this:
+
+```{r,fig.align='center'}
+# Subset the attitude data
+data = attitude[,c(3,4)]
+
+# Plot subset data
+plot(data, pch=20, cex=3,
+     main="% of favourable responses to Learning and Privilege")
+```
+
+K-means
+========================================================
+
+K Means Clustering is an unsupervised learning algorithm that tries to cluster 
+data based on their similarity. Unsupervised learning means that there is no 
+outcome to be predicted, and the algorithm just tries to find patterns in the 
+data. In k means clustering, we have the specify the number of clusters we want 
+the data to be grouped into.
+
+The Shiny application plots the k-means clustering for the selected variables 
+and number of clusters. For example, this is the result for the privileges and
+learning variables for 2 clusters:
+
+```{r, fig.align='center'}
+km = kmeans(data, 2, nstart=100)
+      
+plot(data, col=(km$cluster +1), pch=20, cex=3, 
+     main="K-Means result with 2 clusters")
+
+points(km$centers, pch = 4, cex = 4, lwd = 4)
+```
+
+Result
+========================================================
+
+This is how the Shinny App finally looks:
+
+![alt text](app.png)
+
+The first tab "Plot" contains the inputs and the plot, while the second tab
+"Documentation" contains the app documentation.
