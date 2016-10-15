@@ -1,0 +1,33 @@
+---
+title: "Documentation"
+author: "Eduardo Garcia del Valle"
+date: "14 de octubre de 2016"
+output: html_document
+---
+
+## Chatterjee–Price Attitude k-means clustering Shiny Application
+
+K Means Clustering is an unsupervised learning algorithm that tries to cluster 
+data based on their similarity. Unsupervised learning means that there is no 
+outcome to be predicted, and the algorithm just tries to find patterns in the 
+data. In k means clustering, we have the specify the number of clusters we want 
+the data to be grouped into.
+
+This Shiny Application applies k-means to the Chatterjee–Price Attitude dataset
+obtained from the R datasets library. From a survey of the clerical employees of
+a large financial organization, the data are aggregated from the questionnaires 
+of the approximately 35 employees for each of 30 (randomly selected) 
+departments. The numbers give the percent proportion of favourable responses to 
+seven questions in each department.
+
+
+## How to use it
+
+First select the variables from the Chatterjee–Price Attitude dataset for the 
+k-means clustering using the X Variable and Y Variable selectors in the 
+sidebar panel.
+
+Then select the number of clusters in the Cluster count selector below.
+
+The result of the k-means clustering is shown in the plot in the main panel.
+
